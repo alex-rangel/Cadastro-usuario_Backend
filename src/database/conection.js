@@ -5,7 +5,7 @@ const mysql = require('mysql2')
     port:3306,
     user:'alex',
     password:'1234',
-    database:'nodesql'
+    database:'teste'
 })
 
 module.exports = conection

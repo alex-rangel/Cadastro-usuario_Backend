@@ -14,11 +14,14 @@ module.exports= {
 
     store(req, res){
 
-        const { id,nome,idade } = req.body
+        const { nome,idade } = req.body
 
-        conection.query(`INSERT INTO usuario VALUES(${id}, ${nome}, ${idade})`, (error, result)=>{
+        conection.query(`INSERT INTO usuario(nome, idade) VALUES(?, ?)`,[ nome,idade ], (error, result)=>{
             if(error){
                 res.status(400).json(error)
+            }
+            if (result.affectedRows > 0) {
+                console.log('Usuario cadastrado')
             }
             res.status(200).json('Usuario cadastrado com sucesso')
         })
